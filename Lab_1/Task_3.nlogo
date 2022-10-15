@@ -7,7 +7,6 @@ to setup
     set shape "turtle"
     ;setxy (355 + random 15) (172 + random 15)
     move-to one-of patches with [not any? turtles-here and distance (patch 355 172) < 15 and pcolor != white]
-    ;move-to one-of patches with [not any? turtles-here]
 ]
 
 create-turtles initial-pop-size [
