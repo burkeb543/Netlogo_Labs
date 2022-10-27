@@ -14,7 +14,6 @@ to setup
   import-pcolors "Dublin_Noise_Map.png"
 
   create-hubs 1[
-    ;move-to one-of patches with [pcolor > 24 and not any? turtles-here in-radius 80 ]
     setxy 585 412
     set color [186 85 255];purple
     set size 10
@@ -42,14 +41,14 @@ end
 
 to move-walkers
   ask walkers [
-    ifelse patch-here = goal [
-      set tofrom abs(tofrom - 1)
-      ifelse tofrom > 0[
-        set deliveries deliveries + 1
-        let closest-hub min-one-of hubs [distance myself]
-        set goal [patch-here] of closest-hub
+    ifelse patch-here = goal [ ;check if the delivery location or hub has been reached
+      set tofrom abs(tofrom - 1);update the orientation of the UAV
+      ifelse tofrom > 0[ ;if the UAV has delivered
+        set deliveries deliveries + 1 ;increase the number of deliveries by 1
+        let closest-hub min-one-of hubs [distance myself] ;assign the closest hub to the UAV to closest-hub
+        set goal [patch-here] of closest-hub ;update goal of the UAV to travel towards the closest hub
       ][
-        set goal one-of patches in-radius delivery-radius
+        set goal one-of patches in-radius delivery-radius ;update goal of the UAV to travel towards its delivery location
       ]
     ][
       walk-towards-goal
