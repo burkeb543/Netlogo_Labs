@@ -99,7 +99,7 @@ pop-growth
 pop-growth
 0
 1
-1.0
+0.2
 0.01
 1
 NIL
