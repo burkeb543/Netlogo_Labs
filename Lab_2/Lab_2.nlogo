@@ -8,24 +8,24 @@ patches-own [ popularity popular-patch]
 
 globals [ mouse-clicked? ]
 
-
-
 to setup
   clear-all
   import-pcolors "Dublin_Noise_Map.png"
+
+  create-hubs 1[
+    ;move-to one-of patches with [pcolor > 24 and not any? turtles-here in-radius 80 ]
+    setxy 585 412
+    set color [186 85 255];purple
+    set size 10
+    set shape "house"
+  ]
+
   create-walkers walker-count[
     setxy random-xcor random-ycor
     set goal one-of patches
     set tofrom 1
     set color blue
     set size 2
-  ]
-  let purple [186 85 255]
-  create-hubs 1[
-    move-to one-of patches with [pcolor > 24 and pcolor < 26]
-    set color purple
-    set size 10
-    set shape "house"
   ]
 
   reset-ticks
@@ -117,15 +117,11 @@ to toggle-hub
     ; if there was no buildings near where
     ; the mouse was clicked, we create one
     sprout-hubs 1 [
-      set color cyan
+      set color [186 85 255];purple
       set size 10
       set shape "house"
     ]
   ]
-end
-
-to display-delivery
-
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -227,8 +223,8 @@ SLIDER
 walker-vision-dist
 walker-vision-dist
 0
-70
-9.0
+30
+7.0
 1
 1
 NIL
@@ -241,7 +237,7 @@ SWITCH
 363
 show-popularity?
 show-popularity?
-0
+1
 1
 -1000
 
@@ -278,8 +274,8 @@ SLIDER
 flying-radius
 flying-radius
 0
-350
-200.0
+200
+107.0
 1
 1
 NIL
@@ -294,11 +290,22 @@ hub-count
 hub-count
 0
 100
-20.0
+15.0
 1
 1
 NIL
 HORIZONTAL
+
+MONITOR
+26
+445
+83
+490
+Hubs
+count hubs
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
