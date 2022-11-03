@@ -14,7 +14,6 @@ to setup
     set distance-level 0
 
   ]
-
   ; create the first level of vendors around the producer
   ask patches at-points [[0 -1][0 1][-1 0][1 0]] [
     sprout-vendors 1 [
@@ -25,35 +24,10 @@ to setup
     ]
   ]
 
-  ask patches at-points [[0 -4]] [
-    sprout-producers 1[
-      set color green
-      set shape "house"
-      set goods 0            ;variables initialise as 0 if not specified otherwise but it is a good practice to initialise them explicitly
-      set distance-level 0
-    ]
-  ]
-
-  ask patches at-points [[0 -5]] [
-    sprout-vendors 1 [
-      set color grey
-      set shape "person"
-      set goods 0
-      set distance-level 1 ; the distance level has to be higher than the distance level of the producer
-    ]
-  ]
-
-
-
   repeat (level - 1) [ populate ]  ; create as many distance level as required. level - 1 because we create the first distance-level explicitly above
   ask vendors  [ set label goods ] ; visualise the number of goods each vendor has
-  set mean-goods ( list ) ; initialise the list of mean number of goods at
-  let i 0
-  while [ i < level ] [                                               ; for each distance-level
-    set mean-goods lput 0 mean-goods
-    set i i + 1
-  ]
-  ;set mean-goods (list 0 0 0 0 0 0 ) ; initialise the list of mean number of goods at each distance-level
+  set mean-goods (list 0 0 0 0 0 0 ) ; initialise the list of mean number of goods at each distance-level
+
   reset-ticks
 end
 
