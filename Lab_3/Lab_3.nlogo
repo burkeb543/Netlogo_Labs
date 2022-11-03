@@ -46,7 +46,7 @@ to setup
 
   repeat (level - 1) [ populate ]  ; create as many distance level as required. level - 1 because we create the first distance-level explicitly above
   ask vendors  [ set label goods ] ; visualise the number of goods each vendor has
-  set mean-goods ( list ) ; initialise the list of mean number of goods at
+  set mean-goods ( list ) ; initialise the list of mean number of goods with 0 items
   let i 0
   while [ i < level ] [                                               ; for each distance-level
     set mean-goods lput 0 mean-goods ;add another item to the list and initialise it to 0
@@ -77,8 +77,7 @@ to go
   ask producers [ set goods production-level ]              ; 1. producer produces goods
   ask producers [ trade ]                                   ; 2. producer distributes goods to the closest markets
   ask vendors with [goods > 0 ] [ trade ]                   ; 3. markets that have goods trade goods moving them further away from the production site
-  ask vendors with [ goods >= 1 ] [ set goods goods - round(consumption * ( level - distance-level * 0.8 )/( level )) ]   ; 4. some percentage of goods is destroyed in the process
-
+  ask vendors with [ goods >= 1 ] [ set goods goods - round(consumption * ( level - distance-level * 0.8 )/( level )) ]   ; 4. some percentage of goods is destroyed in the process, with cities consuming more
   iterate-list-of-mean-goods                                ; 5. we record the mean number of goods at each distance-level
   tick
 end
@@ -227,7 +226,7 @@ production-level
 production-level
 4
 50
-44.0
+45.0
 1
 1
 NIL
@@ -295,7 +294,7 @@ consumption
 consumption
 0
 10
-2.0
+1.0
 1
 1
 NIL
