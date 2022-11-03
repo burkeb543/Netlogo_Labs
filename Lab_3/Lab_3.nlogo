@@ -43,8 +43,6 @@ to setup
     ]
   ]
 
-
-
   repeat (level - 1) [ populate ]  ; create as many distance level as required. level - 1 because we create the first distance-level explicitly above
   ask vendors  [ set label goods ] ; visualise the number of goods each vendor has
   set mean-goods ( list ) ; initialise the list of mean number of goods at
@@ -296,7 +294,7 @@ consumption
 consumption
 0
 10
-3.0
+1.0
 1
 1
 NIL
