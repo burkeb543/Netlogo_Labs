@@ -34,7 +34,7 @@ to setup
     ]
   ]
 
-  ask patches at-points [[0 -5]] [
+  ask patches at-points [[0 -5][0 -3][-1 -4][1 -4]] [
     sprout-vendors 1 [
       set color grey
       set shape "person"
@@ -212,8 +212,8 @@ SLIDER
 level
 level
 0
-6
-6.0
+10
+10.0
 1
 1
 NIL
