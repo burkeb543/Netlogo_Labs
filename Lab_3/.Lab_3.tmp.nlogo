@@ -78,7 +78,7 @@ to go
   ask producers [ set goods production-level ]              ; 1. producer produces goods
   ask producers [ trade ]                                   ; 2. producer distributes goods to the closest markets
   ask vendors with [goods > 0 ] [ trade ]                   ; 3. markets that have goods trade goods moving them further away from the production site
-  ask vendors with [ goods >= 1 ] [ set goods goods - consumption ]   ; 4. some percentage of goods is destroyed in the process
+  ask vendors with [ goods >= 1 ] [ set goods goods - rconsumption * ( level - distance-level * 0.9 )/( level ) ]   ; 4. some percentage of goods is destroyed in the process
 
   iterate-list-of-mean-goods                                ; 5. we record the mean number of goods at each distance-level
   tick
@@ -296,7 +296,7 @@ consumption
 consumption
 0
 10
-50.0
+3.0
 1
 1
 NIL
