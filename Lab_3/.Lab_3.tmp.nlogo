@@ -49,7 +49,7 @@ to setup
   set mean-goods ( list ) ; initialise the list of mean number of goods at
   let i 0
   while [ i < level ] [                                               ; for each distance-level
-    set mean-goods lput 0 mean-goods ;add another item to the list and initialise it to 0
+    set mean-goods lput 0 mean-goods ;add another item to the list and in
     set i i + 1
   ]
   ;set mean-goods (list 0 0 0 0 0 0 ) ; initialise the list of mean number of goods at each distance-level
