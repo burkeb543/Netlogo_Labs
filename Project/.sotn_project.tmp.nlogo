@@ -123,12 +123,13 @@ to recolor-map-popularity
 end
 
 to recolor-map-station-popularity
-  ask stations with [cars-charged > 0][ask patches in-radius (5 * cars-charged) [set pcolor magenta]];shows a magenta circle around stations denoting how many visits it had (wider = more visits)
+  ;ask stations with [cars-charged > 0][ask patches in-radius (5 * cars-charged) [set pcolor magenta]];shows a magenta circle around stations denoting how many visits it had (wider = more visits)
+  ask stations with [cars-charged > 0][ask patches in-radius (5 * cars-charged) [set pcolor magent]];shows a magenta circle around stations denoting how many visits it had (wider = more visits)
 end
 
 to move-cars
   ask cars[
-    ifelse distance goal <= 2[;if the car has reached its goal
+    ifelse distance goal <= 5[;if the car has reached its goal
       ifelse color = red[;and was heading into work
         set goal one-of patches with [pxcor <= 115 or pxcor >= 600 or pycor >= 799 or pycor <= 200 and pcolor = 9.9];set goal to somewhere outside city
         set color blue
@@ -186,11 +187,11 @@ end
 GRAPHICS-WINDOW
 0
 10
-716
-1019
+615
+867
 -1
 -1
-0.35
+0.3
 1
 10
 1
@@ -218,8 +219,8 @@ SLIDER
 car-count
 car-count
 0
-500
-200.0
+1000
+1000.0
 1
 1
 NIL
